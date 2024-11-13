@@ -1,0 +1,14 @@
+<template>
+  <keep-alive>
+    <div>
+      <CaresolMainCaresol/>
+      <HomeMoveText/>
+      <HomeAbout/>
+      <HomeRoomsView/>
+      <HomePremiumServices/>
+      <HomeWhyChoose/>
+      <HomeFacilities/>
+      <FooterMainFooter/>
+    </div>
+  </keep-alive>
+</template>

@@ -1,0 +1,9 @@
+<template>
+    <keep-alive>
+       <div>
+        <ContactsTopSection/>
+        <ContactsFormSection/>
+        <FooterMainFooter/>
+       </div>
+   </keep-alive>
+</template>

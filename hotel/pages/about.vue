@@ -1,0 +1,9 @@
+<template>
+    <keep-alive>
+        <div>
+            <AboutTopSection/>
+            <AboutServicesSection/>
+            <FooterMainFooter/>
+        </div>
+    </keep-alive>
+</template>
