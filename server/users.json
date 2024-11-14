@@ -1,8 +1,23 @@
 [
   {
-    "id": "ac8e0711-5802-47c0-a187-b96be49d43f3",
+    "id": "d8ae32f8-3ad3-4ed0-99fc-3a3a13bbc17d",
     "username": "aya2000",
     "email": "aya@gmail.com",
-    "phoneNumber": "01147337496"
+    "phoneNumber": "01147337496",
+    "isAdmin": false
+  },
+  {
+    "id": "b8b7d920-3cd0-43be-af3f-460e9a8c980b",
+    "username": "Aya2050adel",
+    "email": "ayaadel1346@gmail.com",
+    "phoneNumber": "01147337496",
+    "isAdmin": false
+  },
+  {
+    "id": "admin-id",
+    "username": "aya2000",
+    "email": "admin@gmail.com",
+    "phoneNumber": "01147337496",
+    "isAdmin": true
   }
 ]

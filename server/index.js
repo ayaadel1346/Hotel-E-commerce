@@ -1,4 +1,3 @@
-// Import dependencies using ES module syntax
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -13,7 +12,6 @@ dotenv.config();
 const app = express();
 const SECRET_KEY = process.env.SECRET_KEY;
 
-// Setup __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -21,11 +19,10 @@ const reservationsFile = path.join(__dirname, 'reservations.json');
 const usersFile = path.join(__dirname, 'users.json');
 const roomsFile = path.join(__dirname, 'rooms.json');
 
-// Middleware setup
 app.use(express.json());
 app.use(cors());
 
-// Helper functions for reading and writing data
+// Utility functions to read and write data to JSON files
 const readData = (file) => {
   try {
     const data = fs.readFileSync(file, 'utf8');
@@ -39,10 +36,55 @@ const writeData = (file, data) => {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 };
 
-// Room API Endpoints
-app.post('/add-room', (req, res) => {
-  const { roomName, description, capacity, images, price } = req.body;
+// Middleware to authenticate JWT token
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'Token required' });
 
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid token' });
+    req.userId = user.userId;
+    req.isAdmin = user.isAdmin; // Add isAdmin to the request object
+    next();
+  });
+};
+
+// Middleware to check if the user is an admin
+const isAdmin = (req, res, next) => {
+  if (!req.isAdmin) {
+    return res.status(403).json({ message: 'Admin privileges required' });
+  }
+  next();
+};
+
+// Room API Endpoints
+app.get('/room/:id', (req, res) => {
+  const { id } = req.params;
+  const rooms = readData(roomsFile);
+  const room = rooms.find((room) => room.id === id);
+
+  if (!room) {
+    return res.status(404).json({ message: 'Room not found' });
+  }
+
+  res.json(room);
+});
+
+app.get('/rooms', (req, res) => {
+  const rooms = readData(roomsFile);
+
+  if (rooms.length === 0) {
+    return res.status(404).json({ message: 'No rooms found' });
+  }
+
+  res.json(rooms);
+});
+
+
+
+app.post('/add-room', authenticateToken, isAdmin, (req, res) => {
+  const { roomName, description, capacity, images, price } = req.body;
   if (!roomName || !description || !capacity || !Array.isArray(images) || !price) {
     return res.status(400).json({ message: 'Please provide room name, description, capacity, images, and price' });
   }
@@ -63,72 +105,41 @@ app.post('/add-room', (req, res) => {
   res.status(201).json({ message: 'Room added successfully', room: newRoom });
 });
 
-app.post('/check-reservation', (req, res) => {
-  const { roomId } = req.body;
-  if (!roomId) {
-    return res.status(400).json({ message: 'Please provide a room ID' });
-  }
 
-  const reservations = readData(reservationsFile);
-  const roomReservations = reservations.filter((reservation) => reservation.roomId === roomId);
 
-  if (roomReservations.length === 0) {
-    return res.status(404).json({ message: 'No reservations found for the specified room' });
-  }
-
-  const reservedDates = roomReservations.flatMap((reservation) => reservation.reservedDates);
-  const reservedDetails = reservedDates.map((date) => {
-    const reservationDate = new Date(date);
-    return {
-      year: reservationDate.getFullYear(),
-      month: reservationDate.getMonth() + 1,
-      day: reservationDate.getDate(),
-    };
-  });
-
-  res.json({ reservedDates: reservedDetails });
-});
-
-app.post('/register', (req, res) => {
-  const { username, email, phoneNumber } = req.body;
-  if (!username || !email || !phoneNumber) {
-    return res.status(400).json({ message: 'Please provide username, email, and phone number' });
-  }
-
-  const users = readData(usersFile);
-  const userExists = users.some((user) => user.email === email);
-
-  if (userExists) {
-    return res.status(400).json({ message: 'User already exists' });
-  }
-
-  const newUser = {
-    id: uuidv4(),
-    username,
-    email,
-    phoneNumber,
-  };
-
-  users.push(newUser);
-  writeData(usersFile, users);
-
-  res.status(201).json({ message: 'User registered successfully', user: newUser });
-});
-
-app.get('/room/:id', (req, res) => {
+app.put('/edit-room/:id', authenticateToken, isAdmin, (req, res) => {
   const { id } = req.params;
+  const { roomName, description, capacity, images, price } = req.body;
+
+  if (!roomName || !description || !capacity || !Array.isArray(images) || !price) {
+    return res.status(400).json({ message: 'Please provide room name, description, capacity, images, and price' });
+  }
 
   const rooms = readData(roomsFile);
-  const room = rooms.find((room) => room.id === id);
+  const roomIndex = rooms.findIndex((room) => room.id === id);
 
-  if (!room) {
+  if (roomIndex === -1) {
     return res.status(404).json({ message: 'Room not found' });
   }
 
-  res.json(room);
+  const updatedRoom = {
+    ...rooms[roomIndex],
+    roomName,
+    description,
+    capacity,
+    images,
+    price,
+  };
+
+  rooms[roomIndex] = updatedRoom;
+  writeData(roomsFile, rooms);
+
+  res.json({ message: 'Room updated successfully', room: updatedRoom });
 });
 
-app.delete('/remove-room/:id', (req, res) => {
+
+
+app.delete('/remove-room/:id', authenticateToken, isAdmin, (req, res) => {
   const { id } = req.params;
 
   const rooms = readData(roomsFile);
@@ -144,16 +155,35 @@ app.delete('/remove-room/:id', (req, res) => {
   res.json({ message: 'Room removed successfully' });
 });
 
-app.get('/rooms', (req, res) => {
-  const rooms = readData(roomsFile);
-
-  if (rooms.length === 0) {
-    return res.status(404).json({ message: 'No rooms found' });
+// User registration
+app.post('/register', (req, res) => {
+  const { username, email, phoneNumber } = req.body;
+  if (!username || !email || !phoneNumber) {
+    return res.status(400).json({ message: 'Please provide username, email, and phone number' });
   }
 
-  res.json(rooms);
+  const users = readData(usersFile);
+  const userExists = users.some((user) => user.email === email);
+
+  if (userExists) {
+    return res.status(400).json({ message: 'User already exists' });
+  }
+
+  const newUser = {
+    id: email === 'admin@gmail.com' ? 'admin-id' : uuidv4(),
+    username,
+    email,
+    phoneNumber,
+    isAdmin: email === 'admin@gmail.com', // Mark admin user
+  };
+
+  users.push(newUser);
+  writeData(usersFile, users);
+
+  res.status(201).json({ message: 'User registered successfully', user: newUser });
 });
 
+// User login
 app.post('/login', (req, res) => {
   const { username, email } = req.body;
   const users = readData(usersFile);
@@ -163,22 +193,16 @@ app.post('/login', (req, res) => {
     return res.status(400).json({ message: 'Invalid username or email' });
   }
 
-  const token = jwt.sign({ userId: user.id }, SECRET_KEY, { expiresIn: '1h' });
+  const token = jwt.sign({ userId: user.id, isAdmin: user.isAdmin }, SECRET_KEY, { expiresIn: '1h' });
   res.json({ message: 'Login successful', token });
 });
 
-// Middleware to authenticate JWT token
-const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (!token) return res.status(401).json({ message: 'Token required' });
 
-  jwt.verify(token, SECRET_KEY, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Invalid token' });
-    req.userId = user.userId;
-    next();
-  });
-};
+
+app.get('/check-admin', authenticateToken, isAdmin, (req, res) => {
+  res.status(200).json({ message: 'Authorized' });
+});
+
 
 // Reservation API
 app.post('/reserve', authenticateToken, (req, res) => {
@@ -226,7 +250,7 @@ app.post('/reserve', authenticateToken, (req, res) => {
   res.status(201).json({ message: 'Reservation successful', reservation: newReservation });
 });
 
-// Start Express server
+// Start the server
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

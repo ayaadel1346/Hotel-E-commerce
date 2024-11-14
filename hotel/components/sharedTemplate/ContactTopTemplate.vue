@@ -1,31 +1,29 @@
 <template>
-
-    <main class="container-fluid h-[87vh] relative">
-      
-        <v-parallax
-        :src=" TopSectionProp.imageSrc"
-        alt="background image"
-        class="absolute top-0 left-0 w-full h-full"/>
-
-
-      <NuxtLink
-       :to=" TopSectionProp.src" 
-       class="absolute z-10 text-[30px] text-white top-[47%] left-[37%] md:left-[44%] lg:left-[47%]">
-       {{ TopSectionProp.linkName }}
-      </NuxtLink>
-
-
-      <div class="circle-animation"></div>
     
+    <main 
+     class="container-fluid bg-black h-[87vh] relative bg-cover bg-center" 
+     :style="{ backgroundImage: `url(${TopSectionProp.imageSrc})` }">
+        
+        <NuxtLink
+         :to="TopSectionProp.src" 
+         class="absolute z-10 text-[30px] text-white top-[47%] left-[37%] md:left-[44%] lg:left-[47%]">
+         {{ TopSectionProp.linkName }}
+        </NuxtLink>
+
+        <div class="circle-animation"></div>
+
     </main>
-    
+
 </template>
 
 
 
 <script setup>
 defineProps ({
-    TopSectionProp:{}
+    TopSectionProp:{
+      type: Object,
+      required: true
+    }
 })
 </script>
 

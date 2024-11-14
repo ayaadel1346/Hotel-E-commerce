@@ -22,6 +22,9 @@
 
 <script setup>
 defineProps({
-    aboutPropsData:{}
+    aboutPropsData:{
+      type: Object,
+      required: true
+    }
 })
 </script>

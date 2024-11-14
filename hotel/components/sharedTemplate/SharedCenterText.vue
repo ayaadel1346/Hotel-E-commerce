@@ -24,6 +24,9 @@
 
 <script setup>
 defineProps({
-    centerPropsData:{}
+    centerPropsData:{
+      type: Object,
+      required: true
+    }
 })
 </script>

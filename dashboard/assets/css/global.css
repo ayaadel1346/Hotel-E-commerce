@@ -1,0 +1,44 @@
+:root{
+    --primary-color:#fff;
+    --accent-color:#e4bb7d;
+    --black-color:#000;
+    --gray-color:#eeeded;
+    --link-color:#e4bb7dc9;
+    --dark-gray:#474747;
+    --dark-accent:#978667;
+    --white:#f4f2f258;
+    --white-gray:#f4f2f271;
+   
+}
+
+
+.dark{
+  --primary-color:#22282e;
+  --black-color:#fff;
+  --link-color:#f9ba3195;
+  --accent-color:#f9b931;
+  --gray-color:#22282ee3;
+}
+
+
+
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: var(--primary-color);
+}
+
+  /*scroll*/
+  ::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+  ::-webkit-scrollbar-track {
+    background:white; 
+    border-radius: 10px; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background:var(--accent-color);
+    border-radius: 10px; 
+  }
+  
