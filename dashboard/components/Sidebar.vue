@@ -1,10 +1,34 @@
 <template>
 
     <main class="flex">
+
+      <aside
+        v-show="mobileSidebar"
+        class="md:w-[50%] w-[70%] lg:hidden flex flex-col justify-start items-start bg-gray h-full fixed top-0 left-0 shadow-2xl transition-all duration-300 ease-in-out">
+        
+        <div class="mt-5  ml-5  w-[75%] text-[20px] flex flex-col space-y-5">
+
+          <NuxtLink
+            v-for="(link, index) in links"
+            :key="index"
+            :to="link.src"
+            :class="{
+              'bg-accent text-black': isActiveLink(link.src),
+              'text-tableText hover:text-accent': !isActiveLink(link.src),
+              'hover:translate-x-1 transform-translate duration-300 ease-out px-4 w-full py-2 rounded':true
+            }">
+            {{ link.name }}
+          </NuxtLink>
+
+        </div>
+
+      </aside>
+
+
      
       <aside
         v-show="isOpenSidebar"
-        class="w-[15%] flex flex-col justify-start items-start bg-gray h-full fixed top-0 left-0 shadow-2xl transition-all duration-300 ease-in-out">
+        class="lg:w-[15%] hidden lg:flex flex-col justify-start items-start bg-gray h-full fixed top-0 left-0 shadow-2xl transition-all duration-300 ease-in-out">
         
         <button 
          @click="toggleSidebar" 
@@ -25,7 +49,7 @@
             :to="link.src"
             :class="{
               'bg-accent text-black': isActiveLink(link.src),
-              'text-black hover:text-accent': !isActiveLink(link.src),
+              'text-tableText hover:text-accent': !isActiveLink(link.src),
               'hover:translate-x-1 transform-translate duration-300 ease-out px-4 w-full py-2 rounded':true
             }">
             {{ link.name }}
@@ -35,10 +59,11 @@
 
       </aside>
   
+
     
       <aside
         v-show="!isOpenSidebar"
-        class="w-[2%] bg-gray flex justify-end items-start h-full fixed top-0 left-0 shadow-2xl transition-all duration-300 ease-in-out">
+        class="hidden  lg:w-[2%] bg-gray lg:flex justify-end items-start h-full fixed top-0 left-0 shadow-2xl transition-all duration-300 ease-in-out">
         
         <Icon
           @click="toggleSidebar"
@@ -50,9 +75,10 @@
       </aside>
   
     
-      <section :class="[isOpenSidebar ? 'ml-[15%]' : 'ml-[2%]', 'transition-all duration-300 ease-in-out']">
+      <section :class="[isOpenSidebar ? 'ml-[15%]' : 'ml-[2%]']">
         <NuxtPage />
       </section>
+      
 
     </main>
 
@@ -60,12 +86,15 @@
   
 
 
-  <script setup> 
- const isOpenSidebar = useState("dashboardSidebar", () => false);
+<script setup>
+
+const mobileSidebar=useState('mobileSidebar');
+
+const isOpenSidebar = ref (false);
   
 
   const links = [
-    { src: '/', name: 'Home' },
+    { src: '/home', name: 'Home' },
     { src: '/users', name: 'Users' },
     { src: '/rooms', name: 'Rooms' },
     { src: '/reservations', name: 'Reservations' }
@@ -84,9 +113,3 @@
   
 
 
-  <style scoped>
-  .bg-accent {
-    background-color:var(--link-color);
-  }
-  </style>
-  

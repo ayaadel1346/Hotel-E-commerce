@@ -129,13 +129,13 @@
   
 
   <script setup>
-  const username = useState('username', () => '');
-  const email = useState('email', () => '');
-  const phoneNumber = useState('phoneNumber', () => '');
-  const formData = useState('formData', () => ({}));
-  const errors = useState('registerErrors', () => ({}));
-  const message=useState('=registerMessage',()=>'');
-  const errorMessage = useState('errorRegisterMessage', () => false);
+  const username = ref('');
+  const email = ref('');
+  const phoneNumber = ref('');
+  const formData = ref({});
+  const errors = ref({});
+  const message=ref('');
+  const errorMessage = ref(false);
   const isRegistered= useState('isRegistered');
   let timeoutId;
 

@@ -1,5 +1,6 @@
 <template>
     <div>
-        <AuthLogin/>
+        <Header/>
+        <Sidebar/>
     </div>
 </template>

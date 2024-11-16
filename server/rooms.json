@@ -1,0 +1,132 @@
+[
+    {
+      "id": "1a2b3c4d",
+      "roomName": "Deluxe Suite",
+      "description": "A luxurious suite with a beautiful view and all modern amenities.",
+      "capacity": 4,
+      "images": [
+        "https://example.com/images/room1.jpg",
+        "https://example.com/images/room2.jpg"
+      ],
+      "price": 250
+    },
+    {
+      "id": "5e6f7g8h",
+      "roomName": "Standard Room",
+      "description": "A cozy room with a comfortable bed and essential facilities.",
+      "capacity": 2,
+      "images": [
+        "https://example.com/images/room3.jpg",
+        "https://example.com/images/room4.jpg"
+      ],
+      "price": 120
+    },
+    {
+      "id": "9i0j1k2l",
+      "roomName": "Family Room",
+      "description": "Spacious room ideal for families, featuring multiple beds.",
+      "capacity": 6,
+      "images": [
+        "https://example.com/images/room5.jpg",
+        "https://example.com/images/room6.jpg"
+      ],
+      "price": 300
+    },{
+        "id": "1a5b3c4d",
+        "roomName": "Deluxe Suite",
+        "description": "A luxurious suite with a beautiful view and all modern amenities.",
+        "capacity": 4,
+        "images": [
+          "https://example.com/images/room1.jpg",
+          "https://example.com/images/room2.jpg"
+        ],
+        "price": 250
+      },
+      {
+        "id": "8e6f7g8h",
+        "roomName": "Standard Room",
+        "description": "A cozy room with a comfortable bed and essential facilities.",
+        "capacity": 2,
+        "images": [
+          "https://example.com/images/room3.jpg",
+          "https://example.com/images/room4.jpg"
+        ],
+        "price": 120
+      },
+      {
+        "id": "10i0j1k2l",
+        "roomName": "Family Room",
+        "description": "Spacious room ideal for families, featuring multiple beds.",
+        "capacity": 6,
+        "images": [
+          "https://example.com/images/room5.jpg",
+          "https://example.com/images/room6.jpg"
+        ],
+        "price": 300
+      },{
+        "id": "1a2b3c4d",
+        "roomName": "Deluxe Suite",
+        "description": "A luxurious suite with a beautiful view and all modern amenities.",
+        "capacity": 4,
+        "images": [
+          "https://example.com/images/room1.jpg",
+          "https://example.com/images/room2.jpg"
+        ],
+        "price": 250
+      },
+      {
+        "id": "5e56f7g8h",
+        "roomName": "Standard Room",
+        "description": "A cozy room with a comfortable bed and essential facilities.",
+        "capacity": 2,
+        "images": [
+          "https://example.com/images/room3.jpg",
+          "https://example.com/images/room4.jpg"
+        ],
+        "price": 120
+      },
+      {
+        "id": "9i0j158k2l",
+        "roomName": "Family Room",
+        "description": "Spacious room ideal for families, featuring multiple beds.",
+        "capacity": 6,
+        "images": [
+          "https://example.com/images/room5.jpg",
+          "https://example.com/images/room6.jpg"
+        ],
+        "price": 300
+      },{
+        "id": "1a252b3c4d",
+        "roomName": "Deluxe Suite",
+        "description": "A luxurious suite with a beautiful view and all modern amenities.",
+        "capacity": 4,
+        "images": [
+          "https://example.com/images/room1.jpg",
+          "https://example.com/images/room2.jpg"
+        ],
+        "price": 250
+      },
+      {
+        "id": "5e256f7g8h",
+        "roomName": "Standard Room",
+        "description": "A cozy room with a comfortable bed and essential facilities.",
+        "capacity": 2,
+        "images": [
+          "https://example.com/images/room3.jpg",
+          "https://example.com/images/room4.jpg"
+        ],
+        "price": 120
+      },
+      {
+        "id": "87i0j1k2l",
+        "roomName": "Family Room",
+        "description": "Spacious room ideal for families, featuring multiple beds.",
+        "capacity": 6,
+        "images": [
+          "https://example.com/images/room5.jpg",
+          "https://example.com/images/room6.jpg"
+        ],
+        "price": 300
+      }
+  ]
+  

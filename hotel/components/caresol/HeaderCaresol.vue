@@ -44,10 +44,7 @@
 
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
-
-
-const captions = useState('captions',()=>[
+const captions = ref([
   'Experience the ultimate luxury and relaxation by the sea.',
   'Unwind in paradise with breathtaking ocean views.',
   'Escape to tranquility and luxury at our beachfront haven.',
@@ -55,7 +52,7 @@ const captions = useState('captions',()=>[
 ]);
 
 
-const currentCaptionIndex = useState('currentCaptionIndex',()=>0);
+const currentCaptionIndex = ref(0);
 
 let captionInterval;
 

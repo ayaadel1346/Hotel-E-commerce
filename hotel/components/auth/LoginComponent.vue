@@ -87,11 +87,11 @@
   
 
   <script setup>
-  const username = useState('usernameLoginValue', () => '');
-  const email = useState('emailLoginValue', () => '');
-  const formData = useState('loginFormData', () => ({}));
-  const errorMessage = useState('loginErrorMessage', () => false);
-  const message=useState('loginMessage',()=>'');
+  const username = ref('');
+  const email = ref('');
+  const errorMessage = ref(false);
+  const formData = ref({});
+  const message=ref('');
   const isRegistered= useState('isRegistered',()=>false);
   let timeoutId;
 

@@ -7,7 +7,10 @@
     --dark-gray:#474747;
     --dark-accent:#978667;
     --white:#f4f2f258;
-    --white-gray:#f4f2f271;
+    --row-hover:#e4bb7d6f;
+    --white-gray:#eeeded;
+    --border-color:#e5e5e9;
+    --table-text:#000;
    
 }
 
@@ -15,10 +18,15 @@
 .dark{
   --primary-color:#22282e;
   --black-color:#fff;
+  --border-color:#474755;
+  --table-text:#bab8b8;
   --link-color:#f9ba3195;
   --accent-color:#f9b931;
+  --row-hover:#edc05e8b;
   --gray-color:#22282ee3;
+  --white-gray:#373b3ef0;
 }
+
 
 
 
@@ -26,6 +34,36 @@ body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: var(--primary-color);
 }
+
+
+.button-reverse{
+  position: relative;
+}
+
+.button-reverse:hover::before,
+.button-reverse:hover::after {
+    transform: translateX(0);
+  }
+
+.button-reverse::before,
+.button-reverse::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.4s ease-out;
+  }
+
+  .button-reverse::before {
+    transform: translateX(100%);
+  }
+
+  .button-reverse::after {
+    transform: translateX(-100%);
+  }
+
 
   /*scroll*/
   ::-webkit-scrollbar {

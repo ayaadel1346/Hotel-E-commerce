@@ -75,10 +75,13 @@ app.get('/rooms', (req, res) => {
   const rooms = readData(roomsFile);
 
   if (rooms.length === 0) {
-    return res.status(404).json({ message: 'No rooms found' });
+    return res.status(404).json({ message: 'No rooms found', rooms: [] });
   }
 
-  res.json(rooms);
+  res.status(200).json({
+    message: 'Rooms fetched successfully',
+    rooms: rooms,
+  });
 });
 
 
