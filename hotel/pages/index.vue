@@ -7,6 +7,7 @@
       <HomeRoomsView/>
       <HomePremiumServices/>
       <HomeWhyChoose/>
+      <HomeGallery/>
       <HomeFacilities/>
       <FooterMainFooter/>
     </div>

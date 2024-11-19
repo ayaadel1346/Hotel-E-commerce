@@ -2,7 +2,7 @@
 
     <main  
      v-motion-slide-visible-once-top  
-     class="duration-2000 overflow-hidden container-fluid lg:container lg:mx-auto px-5 pb-[3%] lg:pb-0  pt-[3%]">
+     class="duration-2000 overflow-hidden container-fluid  lg:container lg:mx-auto px-5 pb-[3%] lg:pb-0  pt-[4%]">
         
         <SharedTemplateSharedCenterText :centerPropsData="centerPropsData"/>
  

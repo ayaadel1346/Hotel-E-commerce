@@ -2,7 +2,9 @@
     <keep-alive>
        <div>
         <ContactsTopSection/>
-        <ContactsFormSection/>
+        <div id="form">
+            <ContactsFormSection/>
+        </div>
         <FooterMainFooter/>
        </div>
    </keep-alive>

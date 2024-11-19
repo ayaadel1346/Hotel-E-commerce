@@ -13,28 +13,28 @@
         <section class="relative mt-5 w-full">
           <input
             type="text"
-            id="username"
-            v-model="username"
-            @blur="validateUsername"
+            id="password"
+            v-model="password"
+            @blur="validatePassword"
             required
             class="peer w-full border border-accent rounded-md p-3 placeholder-transparent focus:outline-none focus:border-blue-500"
-            placeholder="Username"
+            placeholder="Password"
           />
   
           <label
-            for="username"
+            for="password"
             :class="{
-                '-top-5 text-sm text-white': username,
+                '-top-5 text-sm text-white': password,
                 'absolute left-3 transition-all duration-200 ease-out text-gray-500 peer-placeholder-shown:top-3 peer-placeholder-shown:left-3 peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-400 peer-focus:-top-5 peer-focus:left-3 peer-focus:text-sm peer-focus:text-white': true
             }"
           >
-            Username
+          Password
           </label>
   
           <span 
-           v-if="errors.username" 
+           v-if="errors.password" 
            class="text-red-500 text-sm">
-            {{ errors.username }}
+            {{ errors.password }}
           </span>
         </section>
   
@@ -129,7 +129,7 @@
   
 
   <script setup>
-  const username = ref('');
+  const password = ref('');
   const email = ref('');
   const phoneNumber = ref('');
   const formData = ref({});
@@ -176,15 +176,15 @@ const registerReq = async (userData) => {
 
 
 const resetForm = () => {
-  username.value = '';
+  password.value = '';
   email.value = '';
   phoneNumber.value = '';
   clearTimeout(timeoutId);
 };
 
 
-const validateUsername=() =>{
-    errors.value.username = username.value.length >= 4 ? '' : 'Username must be at least 4 characters long.';
+const validatePassword=() =>{
+    errors.value.password = password.value.length >= 5 ? '' : 'password must be at least 5 characters long.';
 }
   
 
@@ -197,11 +197,11 @@ const validatePhoneNumber = ()=> {
   
   
 const submitForm = () => {
-    validateUsername();
+    validatePassword();
     validatePhoneNumber();
   
-    if (!errors.value.username && !errors.value.phoneNumber) {
-      formData.value.username = username.value;
+    if (!errors.value.password && !errors.value.phoneNumber) {
+      formData.value.password = password.value;
       formData.value.email = email.value;
       formData.value.phoneNumber = phoneNumber.value;
       registerReq(formData.value);

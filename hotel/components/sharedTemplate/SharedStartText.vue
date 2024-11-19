@@ -6,7 +6,7 @@
           {{ aboutPropsData.title }}
         </h2>
 
-        <h1 class="text-black my-5 font-bold md:text-[45px] text-[30px] leading-[55px]">
+        <h1 class="text-black  font-serif my-5 font-bold md:text-[45px] text-[30px] leading-[55px]">
            {{ aboutPropsData.subTitle }}     
         </h1>
 

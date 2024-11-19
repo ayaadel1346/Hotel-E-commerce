@@ -8,11 +8,11 @@
                        z-30 h-[75%] w-[40%] bg-[rgba(255, 255, 255, 0.297)] rounded-t-[50%] backdrop-blur-lg 
                        shadow-[0px_4px_15px rgba(255,215,0,0.6)] flex flex-col items-center justify-center">
 
-            <h1 class="text-[45px] mt-8 font-extrabold text-center text-accent" >
+            <h1  v-motion-slide-visible-once-left  class="text-[45px] duration-2000  font-serif mt-8 font-extrabold text-center text-accent" >
                 Welcome to Hotera
             </h1>
 
-            <p class="mt-6 text-white leading-[50px] text-center text-gray-800 text-[16px] font-semibold">
+            <p  v-motion-slide-visible-once-right  class="mt-6 text-white duration-2000 leading-[50px] text-center text-gray-800 text-[17px]">
               {{captions[currentCaptionIndex]}}
             </p>
 
@@ -25,7 +25,7 @@
 
       <header class=" block lg:hidden absolute md:top-[35%] top-[30%] left-[1%] w-full">
 
-          <h1 class="md:text-[53px] text-[30px] mt-8 font-extrabold text-center text-accent" >
+          <h1 class="md:text-[53px]  font-serif text-[30px] mt-8 font-extrabold text-center text-accent" >
             Welcome to Hotera
           </h1>
 

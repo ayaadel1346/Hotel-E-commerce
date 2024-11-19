@@ -128,8 +128,8 @@ const handleMouseMove = (event) => {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(53, 52, 52, 0.116);
+  border: 2px solid rgba(43, 43, 43, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   opacity: 0.6;
 }
@@ -138,7 +138,7 @@ const handleMouseMove = (event) => {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.068);
+  background: rgba(9, 9, 9, 0.137);
   clip-path: polygon(0 0, 100% 0, 0 100%);
   z-index: 1;
 }

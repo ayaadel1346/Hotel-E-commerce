@@ -2,7 +2,9 @@
     <keep-alive>
         <div>
             <AboutTopSection/>
-            <AboutServicesSection/>
+            <div id="services">
+                <AboutServicesSection/>
+            </div>
             <FooterMainFooter/>
         </div>
     </keep-alive>

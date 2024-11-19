@@ -182,30 +182,35 @@ app.delete('/remove-room/:id', authenticateToken, isAdmin, (req, res) => {
 
 // User Registration
 app.post('/register', (req, res) => {
-  const { username, email, password } = req.body;
+  const { email, password, phoneNumber } = req.body;
 
-  if (!username || !email || !password) {
-    return res.status(400).json({ message: 'Please provide username, email, and password' });
+  // Validate if email, password, and phoneNumber are provided
+  if (!email || !password || !phoneNumber) {
+    return res.status(400).json({ message: 'Please provide email, password, and phone number' });
   }
 
   const users = readData(usersFile);
 
+  // Check if email is already registered
   if (users.some((user) => user.email === email)) {
     return res.status(400).json({ message: 'Email already registered' });
   }
 
+  // Create new user object without username, but with phone number
   const newUser = {
     id: uuidv4(),
-    username,
     email,
     password, 
-    isAdmin:false,
+    phoneNumber, // Added phone number here
+    isAdmin: false,
   };
 
+  // Add new user to the users array and write to the file
   users.push(newUser);
   writeData(usersFile, users);
 
-  res.status(201).json({ message: 'User registered successfully', user: { id: newUser.id, username, email } });
+  // Send success response with user data excluding password
+  res.status(201).json({ message: 'User registered successfully', user: { id: newUser.id, email, phoneNumber } });
 });
 
 // User Login

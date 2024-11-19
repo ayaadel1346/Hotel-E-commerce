@@ -19,7 +19,7 @@
        v-motion-pop-visible-once 
        class="duration-2000 lg:w-[67%] w-full lg:mx-auto rounded  p-10  lg:bg-white bg-[#1d1d1db3] container-fluid ">
               
-         <h1 class="capitalize text-center md:leading-[50px] leading-[35px] font-bold lg:text-black text-white lg:text-[50px] md:text-[40px] text-[30px]">
+         <h1 class=" font-serif capitalize text-center md:leading-[50px] leading-[35px] font-bold lg:text-black text-white lg:text-[50px] md:text-[40px] text-[30px]">
             <span class=" border-l-[4px] border-darkAccent px-5">
                why choose us
             </span>

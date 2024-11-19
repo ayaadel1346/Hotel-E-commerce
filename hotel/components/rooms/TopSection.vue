@@ -2,15 +2,15 @@
 
     <SharedTemplateContactTopTemplate :TopSectionProp="TopSectionProp" />
      
-</template>
+ </template>
  
  
  
  <script setup>
  const TopSectionProp={
-     imageSrc:'https://wp.hostlin.com/nilachol/images/slider/4.jpg',
-     src:'#form',
-     linkName:'Contact'
+     imageSrc:'https://thewebmax.org/sharan/images/main-slider/slider1/slide2.jpg',
+     src:'#roomsSections',
+     linkName:' Rooms'
  }
  </script>
  
