@@ -5,12 +5,14 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import jwt from 'jsonwebtoken';
+import multer from 'multer';
 import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
 const SECRET_KEY = process.env.SECRET_KEY;
+app.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,9 +20,25 @@ const __dirname = path.dirname(__filename);
 const reservationsFile = path.join(__dirname, 'reservations.json');
 const usersFile = path.join(__dirname, 'users.json');
 const roomsFile = path.join(__dirname, 'rooms.json');
+const uploadsDir = path.join(__dirname, 'uploads');
 
-app.use(express.json());
-app.use(cors());
+// Ensure the uploads directory exists
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
+// Multer setup for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadsDir);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = `${Date.now()}-${uuidv4()}${path.extname(file.originalname)}`;
+    cb(null, uniqueSuffix);
+  },
+});
+
+const upload = multer({ storage });
 
 // Utility functions to read and write data to JSON files
 const readData = (file) => {
@@ -84,22 +102,24 @@ app.get('/rooms', (req, res) => {
   });
 });
 
+app.post('/add-room', authenticateToken, isAdmin, upload.array('images', 10), (req, res) => {
+  const { roomName, description, capacity, price } = req.body;
+  const files = req.files;
 
-
-app.post('/add-room', authenticateToken, isAdmin, (req, res) => {
-  const { roomName, description, capacity, images, price } = req.body;
-  if (!roomName || !description || !capacity || !Array.isArray(images) || !price) {
+  if (!roomName || !description || !capacity || !files || !price) {
     return res.status(400).json({ message: 'Please provide room name, description, capacity, images, and price' });
   }
+
+  const images = files.map((file) => file.filename);
 
   const rooms = readData(roomsFile);
   const newRoom = {
     id: uuidv4(),
     roomName,
     description,
-    capacity,
+    capacity: parseInt(capacity, 10),
     images,
-    price,
+    price: parseFloat(price),
   };
 
   rooms.push(newRoom);
@@ -108,15 +128,10 @@ app.post('/add-room', authenticateToken, isAdmin, (req, res) => {
   res.status(201).json({ message: 'Room added successfully', room: newRoom });
 });
 
-
-
-app.put('/edit-room/:id', authenticateToken, isAdmin, (req, res) => {
+app.put('/edit-room/:id', authenticateToken, isAdmin, upload.array('images', 10), (req, res) => {
   const { id } = req.params;
-  const { roomName, description, capacity, images, price } = req.body;
-
-  if (!roomName || !description || !capacity || !Array.isArray(images) || !price) {
-    return res.status(400).json({ message: 'Please provide room name, description, capacity, images, and price' });
-  }
+  const { roomName, description, capacity, price } = req.body;
+  const files = req.files;
 
   const rooms = readData(roomsFile);
   const roomIndex = rooms.findIndex((room) => room.id === id);
@@ -125,13 +140,15 @@ app.put('/edit-room/:id', authenticateToken, isAdmin, (req, res) => {
     return res.status(404).json({ message: 'Room not found' });
   }
 
+  const images = files.map((file) => file.filename);
+
   const updatedRoom = {
     ...rooms[roomIndex],
     roomName,
     description,
-    capacity,
-    images,
-    price,
+    capacity: parseInt(capacity, 10),
+    images: images.length > 0 ? images : rooms[roomIndex].images,
+    price: parseFloat(price),
   };
 
   rooms[roomIndex] = updatedRoom;
@@ -139,8 +156,6 @@ app.put('/edit-room/:id', authenticateToken, isAdmin, (req, res) => {
 
   res.json({ message: 'Room updated successfully', room: updatedRoom });
 });
-
-
 
 app.delete('/remove-room/:id', authenticateToken, isAdmin, (req, res) => {
   const { id } = req.params;
@@ -158,100 +173,138 @@ app.delete('/remove-room/:id', authenticateToken, isAdmin, (req, res) => {
   res.json({ message: 'Room removed successfully' });
 });
 
-// User registration
+// Other APIs (register, login, reserve, etc.) remain unchanged
+// User API Endpoints
+
+// User Registration
 app.post('/register', (req, res) => {
-  const { username, email, phoneNumber } = req.body;
-  if (!username || !email || !phoneNumber) {
-    return res.status(400).json({ message: 'Please provide username, email, and phone number' });
+  const { username, email, password, isAdmin } = req.body;
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: 'Please provide username, email, and password' });
   }
 
   const users = readData(usersFile);
-  const userExists = users.some((user) => user.email === email);
 
-  if (userExists) {
-    return res.status(400).json({ message: 'User already exists' });
+  if (users.some((user) => user.email === email)) {
+    return res.status(400).json({ message: 'Email already registered' });
   }
 
   const newUser = {
-    id: email === 'admin@gmail.com' ? 'admin-id' : uuidv4(),
+    id: uuidv4(),
     username,
     email,
-    phoneNumber,
-    isAdmin: email === 'admin@gmail.com', // Mark admin user
+    password, // For real-world applications, hash this password
+    isAdmin: !!isAdmin,
   };
 
   users.push(newUser);
   writeData(usersFile, users);
 
-  res.status(201).json({ message: 'User registered successfully', user: newUser });
+  res.status(201).json({ message: 'User registered successfully', user: { id: newUser.id, username, email } });
 });
 
-// User login
+// User Login
 app.post('/login', (req, res) => {
-  const { username, email } = req.body;
-  const users = readData(usersFile);
+  const { email, password } = req.body;
 
-  const user = users.find((user) => user.username === username && user.email === email);
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Please provide email and password' });
+  }
+
+  const users = readData(usersFile);
+  const user = users.find((u) => u.email === email && u.password === password);
+
   if (!user) {
-    return res.status(400).json({ message: 'Invalid username or email' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
 
   const token = jwt.sign({ userId: user.id, isAdmin: user.isAdmin }, SECRET_KEY, { expiresIn: '1h' });
+
   res.json({ message: 'Login successful', token });
 });
 
+// Reservation API Endpoints
 
-
-app.get('/check-admin', authenticateToken, isAdmin, (req, res) => {
-  res.status(200).json({ message: 'Authorized' });
-});
-
-
-// Reservation API
+// Create Reservation
 app.post('/reserve', authenticateToken, (req, res) => {
-  const { roomId, date, numberOfNights, adults, children } = req.body;
-  if (!roomId || !date || !numberOfNights || adults == null || children == null) {
-    return res.status(400).json({ message: 'Please provide all required fields' });
+  const { roomId, startDate, endDate } = req.body;
+
+  if (!roomId || !startDate || !endDate) {
+    return res.status(400).json({ message: 'Please provide roomId, startDate, and endDate' });
   }
 
-  const startDate = new Date(date);
-  const reservedDates = [];
+  const rooms = readData(roomsFile);
+  const room = rooms.find((room) => room.id === roomId);
 
-  for (let i = 0; i < numberOfNights; i++) {
-    const reservedDate = new Date(startDate);
-    reservedDate.setDate(startDate.getDate() + i);
-    reservedDates.push(reservedDate.toISOString().split('T')[0]);
+  if (!room) {
+    return res.status(404).json({ message: 'Room not found' });
   }
 
   const reservations = readData(reservationsFile);
-
-  const isAvailable = reservations.every((reservation) => {
-    if (reservation.roomId === roomId) {
-      return !reservation.reservedDates.some((reservedDate) => reservedDates.includes(reservedDate));
-    }
-    return true;
-  });
-
-  if (!isAvailable) {
-    return res.status(400).json({ message: 'Room not available for the selected dates' });
-  }
-
   const newReservation = {
     id: uuidv4(),
-    userId: req.userId,
     roomId,
-    date: startDate.toISOString().split('T')[0],
-    numberOfNights,
-    reservedDates,
-    adults,
-    children,
+    userId: req.userId,
+    startDate,
+    endDate,
   };
 
   reservations.push(newReservation);
   writeData(reservationsFile, reservations);
 
-  res.status(201).json({ message: 'Reservation successful', reservation: newReservation });
+  res.status(201).json({ message: 'Reservation created successfully', reservation: newReservation });
 });
+
+// Get Reservations by User
+app.get('/my-reservations', authenticateToken, (req, res) => {
+  const reservations = readData(reservationsFile);
+  const userReservations = reservations.filter((res) => res.userId === req.userId);
+
+  res.json({ message: 'Reservations fetched successfully', reservations: userReservations });
+});
+
+// Admin: Get All Reservations
+app.get('/all-reservations', authenticateToken, isAdmin, (req, res) => {
+  const reservations = readData(reservationsFile);
+
+  res.json({ message: 'All reservations fetched successfully', reservations });
+});
+
+// Cancel Reservation
+app.delete('/cancel-reservation/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+
+  const reservations = readData(reservationsFile);
+  const reservationIndex = reservations.findIndex((res) => res.id === id && res.userId === req.userId);
+
+  if (reservationIndex === -1) {
+    return res.status(404).json({ message: 'Reservation not found or you are not authorized to cancel it' });
+  }
+
+  reservations.splice(reservationIndex, 1);
+  writeData(reservationsFile, reservations);
+
+  res.json({ message: 'Reservation canceled successfully' });
+});
+
+// Admin: Delete Any Reservation
+app.delete('/admin-cancel-reservation/:id', authenticateToken, isAdmin, (req, res) => {
+  const { id } = req.params;
+
+  const reservations = readData(reservationsFile);
+  const reservationIndex = reservations.findIndex((res) => res.id === id);
+
+  if (reservationIndex === -1) {
+    return res.status(404).json({ message: 'Reservation not found' });
+  }
+
+  reservations.splice(reservationIndex, 1);
+  writeData(reservationsFile, reservations);
+
+  res.json({ message: 'Reservation canceled successfully by admin' });
+});
+
 
 // Start the server
 const port = process.env.PORT || 5000;

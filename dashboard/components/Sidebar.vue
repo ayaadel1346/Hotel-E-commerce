@@ -75,7 +75,7 @@
       </aside>
   
     
-      <section :class="[isOpenSidebar ? 'ml-[15%]' : 'ml-[2%]']">
+      <section :class="[isOpenSidebar ? 'ml-[15%] w-full' : 'ml-[2%] w-full']">
         <NuxtPage />
       </section>
       

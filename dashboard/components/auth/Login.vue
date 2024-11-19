@@ -14,7 +14,6 @@
               type="text"
               id="username"
               v-model="username"
-              @blur="validateUsername"
               required
               class="peer bg-gray w-full border border-accent rounded-md p-3 placeholder-transparent focus:outline-none focus:border-blue-500"
               placeholder="Username"

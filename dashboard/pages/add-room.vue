@@ -1,5 +1,5 @@
 <template>
-    <RoomAllRooms/>
+   <RoomAddRoom/>
 </template>
 
 <script setup>
