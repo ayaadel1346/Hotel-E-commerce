@@ -48,7 +48,7 @@
             :key="index"
             :to="link.src"
             :class="{
-              'bg-accent text-black': isActiveLink(link.src),
+              'bg-accent dark:bg-rowHover text-black': isActiveLink(link.src),
               'text-tableText hover:text-accent': !isActiveLink(link.src),
               'hover:translate-x-1 transform-translate duration-300 ease-out px-4 w-full py-2 rounded':true
             }">

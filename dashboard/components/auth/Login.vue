@@ -12,21 +12,21 @@
           <section class="relative mt-5 w-full">
             <input
               type="text"
-              id="username"
-              v-model="username"
+              id="password"
+              v-model="password"
               required
               class="peer bg-gray w-full border border-accent rounded-md p-3 placeholder-transparent focus:outline-none focus:border-blue-500"
-              placeholder="Username"
+              placeholder="Password"
             />
 
             <label
-              for="username"
+              for="password"
               :class="{
-                  '-top-5 text-sm text-blue-500': username,
+                  '-top-5 text-sm text-blue-500': password,
                   'absolute left-3 text-black transition-all duration-200 ease-out text-gray-500 peer-placeholder-shown:top-3 peer-placeholder-shown:left-3 peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-400 peer-focus:-top-5 peer-focus:left-3 peer-focus:text-sm peer-focus:text-blue-500': true
               }"
             >
-              Username
+              Password
             </label>
           </section>
 
@@ -79,7 +79,7 @@
   
 
   <script setup>
-  const username = ref('');
+  const password = ref('');
   const email = ref('');
   const errorMessage = ref(false);
   const formData = ref({});
@@ -90,7 +90,7 @@
 
   const loginUser= async (userData)=>{
     try{
-      const {data,error}=await useLazyAsyncData('login',()=>$fetch('http://localhost:5000/login',{
+      const {data,error}=await useLazyAsyncData('login',()=>$fetch('http://localhost:5000/admin/login',{
         method:'POST',
         body:JSON.stringify(userData),
         headers:{
@@ -118,14 +118,14 @@
   
   
   const resetForm = () => {
-  username.value = '';
+  password.value = '';
   email.value = '';
   clearTimeout(timeoutId);
   };
 
 
   const submitForm= ()=>{  
-    formData.value.username = username.value;
+    formData.value.password = password.value;
     formData.value.email = email.value;
     loginUser(formData.value);   
   }

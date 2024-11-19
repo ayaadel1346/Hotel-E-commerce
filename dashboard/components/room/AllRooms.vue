@@ -2,7 +2,7 @@
 
   <main class="text-tableText mx-5 my-5 flex justify-center items-center container-fluid">
 
-    <section class="w-full min-h-[84vh] shadow-2xl rounded border-borderGray border-[1px]">
+    <section class="w-full bg-gray min-h-[84vh] shadow-2xl rounded border-borderGray border-[1px]">
 
     <div class="flex justify-end p-5">
 
@@ -47,7 +47,7 @@
             <td class="p-3">{{ room.description }}</td>
             <td class="p-3">{{ room.capacity }} persons</td>
             <td class="p-3">${{ room.price.toFixed(2) }}</td>
-            <td class="p-3 flex  justify-around items-center">
+            <td class="py-10 flex  justify-around items-center">
             <NuxtLink  :to="{
               path: `/rooms/${room.id}`, 
               query: {
@@ -117,7 +117,7 @@ import Swal from 'sweetalert2';
 const search = ref("");
 const rooms = useState('roomsData',()=>[]);
 const currentPage = ref(1);
-const roomsPerPage = 8;
+const roomsPerPage = 4;
 
 
 const fetchRooms = async () => {

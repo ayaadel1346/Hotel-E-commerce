@@ -13,12 +13,16 @@ dotenv.config();
 const app = express();
 const SECRET_KEY = process.env.SECRET_KEY;
 app.use(cors());
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const reservationsFile = path.join(__dirname, 'reservations.json');
 const usersFile = path.join(__dirname, 'users.json');
+const adminFile = path.join(__dirname, 'admin.json');
 const roomsFile = path.join(__dirname, 'rooms.json');
 const uploadsDir = path.join(__dirname, 'uploads');
 
@@ -178,7 +182,7 @@ app.delete('/remove-room/:id', authenticateToken, isAdmin, (req, res) => {
 
 // User Registration
 app.post('/register', (req, res) => {
-  const { username, email, password, isAdmin } = req.body;
+  const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ message: 'Please provide username, email, and password' });
@@ -194,8 +198,8 @@ app.post('/register', (req, res) => {
     id: uuidv4(),
     username,
     email,
-    password, // For real-world applications, hash this password
-    isAdmin: !!isAdmin,
+    password, 
+    isAdmin:false,
   };
 
   users.push(newUser);
@@ -220,6 +224,57 @@ app.post('/login', (req, res) => {
   }
 
   const token = jwt.sign({ userId: user.id, isAdmin: user.isAdmin }, SECRET_KEY, { expiresIn: '1h' });
+
+  res.json({ message: 'Login successful', token });
+});
+
+
+
+// admin api 
+
+app.post('/admin/register', (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: 'Please provide username, email, and password' });
+  }
+
+  const users = readData(adminFile);
+
+  if (users.some((user) => user.email === email)) {
+    return res.status(400).json({ message: 'Email already registered' });
+  }
+
+  const newUser = {
+    id: uuidv4(),
+    username,
+    email,
+    password, // For real-world applications, hash this password
+    isAdmin:true,
+  };
+
+  users.push(newUser);
+  writeData(usersFile, users);
+
+  res.status(201).json({ message: 'User registered successfully', user: { id: newUser.id, username, email } });
+});
+
+// User Login admin
+app.post('/admin/login', (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Please provide email and password' });
+  }
+
+  const users = readData(adminFile);
+  const user = users.find((u) => u.email === email && u.password === password);
+
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid email or password' });
+  }
+
+  const token = jwt.sign({userId: user.id, isAdmin: user.isAdmin }, SECRET_KEY, { expiresIn: '1h' });
 
   res.json({ message: 'Login successful', token });
 });
