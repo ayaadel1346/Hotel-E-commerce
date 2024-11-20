@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '~/assets/css/global.css'
   ],
   modules: [
-    '@pinia/nuxt', 
     '@nuxtjs/tailwindcss', 
     '@vueuse/motion/nuxt', 
     '@nuxt/icon', 

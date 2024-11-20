@@ -26,6 +26,9 @@ const adminFile = path.join(__dirname, 'admin.json');
 const roomsFile = path.join(__dirname, 'rooms.json');
 const uploadsDir = path.join(__dirname, 'uploads');
 
+app.use('/uploads', express.static(uploadsDir));  // Serving the /uploads folder
+
+
 // Ensure the uploads directory exists
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
@@ -122,7 +125,7 @@ app.post('/add-room', authenticateToken, isAdmin, upload.array('images', 10), (r
     roomName,
     description,
     capacity: parseInt(capacity, 10),
-    images,
+    images: images.map((image) => `${req.protocol}://${req.get('host')}/uploads/${image}`),
     price: parseFloat(price),
   };
 
@@ -151,7 +154,7 @@ app.put('/edit-room/:id', authenticateToken, isAdmin, upload.array('images', 10)
     roomName,
     description,
     capacity: parseInt(capacity, 10),
-    images: images.length > 0 ? images : rooms[roomIndex].images,
+    images: images.length > 0 ? images.map((image) => `${req.protocol}://${req.get('host')}/uploads/${image}`) : rooms[roomIndex].images,
     price: parseFloat(price),
   };
 

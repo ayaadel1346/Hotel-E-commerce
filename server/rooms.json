@@ -5,8 +5,8 @@
     "description": "A luxurious suite with a stunning view of the ocean, featuring a king-size bed, a spacious living area, and a private balcony.",
     "capacity": 4,
     "images": [
-      "1732026546324-a924fd37-3585-4ec3-a52b-33fd340f5737.jpg",
-      "1732026546324-3c6f298b-4feb-4887-94f0-67bb3e51acde.jpg"
+      "http://localhost:5000/uploads/1732026546324-a924fd37-3585-4ec3-a52b-33fd340f5737.jpg",
+      "http://localhost:5000/uploads/1732026546324-3c6f298b-4feb-4887-94f0-67bb3e51acde.jpg"
     ],
     "price": 300
   },
@@ -16,8 +16,8 @@
     "description": " A modern room with panoramic views of the city's skyline, equipped with a queen bed and a cozy sitting area.",
     "capacity": 2,
     "images": [
-      "1732024942889-9b34ec0f-1e08-40dc-ba1b-18d92f79f4a8.jpg",
-      "1732024942889-0d1de4cc-f2a9-49da-b695-b6e66f83927b.jpg"
+      "http://localhost:5000/uploads/1732024942889-9b34ec0f-1e08-40dc-ba1b-18d92f79f4a8.jpg",
+      "http://localhost:5000/uploads/1732024942889-0d1de4cc-f2a9-49da-b695-b6e66f83927b.jpg"
     ],
     "price": 220
   },
@@ -27,8 +27,8 @@
     "description": "A tranquil room with breathtaking mountain views, featuring a king-size bed, wooden interiors, and a fireplace.",
     "capacity": 2,
     "images": [
-      "1732025086773-6d2930c7-c25a-493e-857e-614410bc52da.jpg",
-      "1732025086773-3a157da6-566c-496d-8c43-aab9b59aa25f.jpg"
+      "http://localhost:5000/uploads/1732025086773-6d2930c7-c25a-493e-857e-614410bc52da.jpg",
+      "http://localhost:5000/uploads/1732025086773-3a157da6-566c-496d-8c43-aab9b59aa25f.jpg"
     ],
     "price": 300
   },
@@ -38,8 +38,8 @@
     "description": "A charming suite with a private garden, perfect for those seeking a peaceful escape. Includes a queen-size bed and a small sitting area.",
     "capacity": 3,
     "images": [
-      "1732025204616-dadb955f-11bd-495d-b56a-bc5075f5d187.jpg",
-      "1732025204616-c7e181ef-706b-495e-b972-afdf2a1da532.jpg"
+      "http://localhost:5000/uploads/1732025204616-dadb955f-11bd-495d-b56a-bc5075f5d187.jpg",
+      "http://localhost:5000/uploads/1732025204616-c7e181ef-706b-495e-b972-afdf2a1da532.jpg"
     ],
     "price": 500
   },
@@ -49,8 +49,8 @@
     "description": "An opulent top-floor suite with panoramic city views, a full kitchen, spacious living room, and a private hot tub.",
     "capacity": 4,
     "images": [
-      "1732025305177-a3650f98-05ef-4eb7-967d-8a3082b2f068.jpg",
-      "1732025305177-7f4b034f-7f57-4390-a9f7-1172cb46f0a3.jpg"
+      "http://localhost:5000/uploads/1732025305177-a3650f98-05ef-4eb7-967d-8a3082b2f068.jpg",
+      "http://localhost:5000/uploads/1732025305177-7f4b034f-7f57-4390-a9f7-1172cb46f0a3.jpg"
     ],
     "price": 600
   },
@@ -60,8 +60,8 @@
     "description": " A spacious room designed for families, featuring two queen beds, a play area for children, and a TV.",
     "capacity": 5,
     "images": [
-      "1732025452623-7bf8e640-6076-49a1-b6a3-e6e47a9bdb19.jpg",
-      "1732025452623-29c38e42-cc16-4871-9cbe-af2e42c0d2ef.jpg"
+      "http://localhost:5000/uploads/1732025452623-7bf8e640-6076-49a1-b6a3-e6e47a9bdb19.jpg",
+      "http://localhost:5000/uploads/1732025452623-29c38e42-cc16-4871-9cbe-af2e42c0d2ef.jpg"
     ],
     "price": 500
   },
@@ -71,8 +71,8 @@
     "description": "A comfortable room with a king-size bed, plush seating, and an elegant bathroom with a jacuzzi tub.",
     "capacity": 2,
     "images": [
-      "1732025600379-22be7c80-76da-4192-90bc-d4caa236c874.jpg",
-      "1732025600379-37575d6e-b5d4-4f5e-9500-43f61a225bf6.jpg"
+      "http://localhost:5000/uploads/1732025600379-22be7c80-76da-4192-90bc-d4caa236c874.jpg",
+      "http://localhost:5000/uploads/1732025600379-37575d6e-b5d4-4f5e-9500-43f61a225bf6.jpg"
     ],
     "price": 300
   },
@@ -82,8 +82,8 @@
     "description": "A cozy room featuring a queen-size bed, a work desk, and a modern bathroom.",
     "capacity": 2,
     "images": [
-      "1732025754961-69078818-7b4e-4e2e-a581-fb3476891830.jpg",
-      "1732025754961-209e1cc0-7489-4a1b-987d-77fe7d486e04.jpg"
+      "http://localhost:5000/uploads/1732025754961-69078818-7b4e-4e2e-a581-fb3476891830.jpg",
+      "http://localhost:5000/uploads/1732025754961-209e1cc0-7489-4a1b-987d-77fe7d486e04.jpg"
     ],
     "price": 300
   },
@@ -93,8 +93,8 @@
     "description": "A sophisticated suite designed for business travelers, featuring a king-size bed, office desk, and high-speed internet.",
     "capacity": 3,
     "images": [
-      "1732025848248-7438468d-74b4-47e6-961d-ebca0277b15f.jpg",
-      "1732025848248-8e9edf0a-59f0-45f9-837a-291f9254ef98.jpg"
+      "http://localhost:5000/uploads/1732025848248-7438468d-74b4-47e6-961d-ebca0277b15f.jpg",
+      "http://localhost:5000/uploads/1732025848248-8e9edf0a-59f0-45f9-837a-291f9254ef98.jpg"
     ],
     "price": 400
   },
@@ -104,8 +104,8 @@
     "description": " A room located just steps from the beach, with a king-size bed, private terrace, and ocean sounds.",
     "capacity": 5,
     "images": [
-      "1732025941153-d138d027-ba9a-4b2b-9a95-fc3ea2ad86a1.jpg",
-      "1732025941153-e52e76da-6781-43d8-b95f-c6e5da2dbddf.jpg"
+      "http://localhost:5000/uploads/1732025941153-d138d027-ba9a-4b2b-9a95-fc3ea2ad86a1.jpg",
+      "http://localhost:5000/uploads/1732025941153-e52e76da-6781-43d8-b95f-c6e5da2dbddf.jpg"
     ],
     "price": 500
   },
@@ -115,8 +115,8 @@
     "description": " A two-story suite with a mezzanine bedroom, full kitchen, and living area, perfect for long stays.",
     "capacity": 4,
     "images": [
-      "1732026011883-770c6a4e-9031-466d-9f57-9ec99f990a39.jpg",
-      "1732026011883-28ea3906-c41e-4e79-af26-7e547e6fb909.jpg"
+      "http://localhost:5000/uploads/1732026011883-770c6a4e-9031-466d-9f57-9ec99f990a39.jpg",
+      "http://localhost:5000/uploads/1732026011883-28ea3906-c41e-4e79-af26-7e547e6fb909.jpg"
     ],
     "price": 400
   },
@@ -126,8 +126,8 @@
     "description": " A spacious room located near the pool, with a king-size bed, private patio, and direct pool access.",
     "capacity": 2,
     "images": [
-      "1732026112054-8a2043f7-364c-46ef-aaf9-452f3fc9be93.jpg",
-      "1732026112054-e0d6f860-4680-4dd7-9455-012b887566ac.jpg"
+      "http://localhost:5000/uploads/1732026112054-8a2043f7-364c-46ef-aaf9-452f3fc9be93.jpg",
+      "http://localhost:5000/uploads/1732026112054-e0d6f860-4680-4dd7-9455-012b887566ac.jpg"
     ],
     "price": 200
   },
@@ -137,8 +137,8 @@
     "description": " An accessible room with wide doors, a walk-in shower, and other facilities for guests with disabilities.",
     "capacity": 2,
     "images": [
-      "1732026196376-eeb64fd0-34ee-4349-a7fa-4eac7d4ecf6a.jpg",
-      "1732026196376-93132125-c4bc-4c58-924c-14a91803f9c1.jpg"
+      "http://localhost:5000/uploads/1732026196376-eeb64fd0-34ee-4349-a7fa-4eac7d4ecf6a.jpg",
+      "http://localhost:5000/uploads/1732026196376-93132125-c4bc-4c58-924c-14a91803f9c1.jpg"
     ],
     "price": 200
   },
@@ -148,8 +148,8 @@
     "description": "A chic loft-style room with floor-to-ceiling windows showcasing the city skyline and a modern design.",
     "capacity": 3,
     "images": [
-      "1732026270922-e22e86e1-4405-462f-b444-820e05771f73.jpg",
-      "1732026270922-ef76c073-a3c4-4346-bfd1-7f7c0e43a82a.jpg"
+      "http://localhost:5000/uploads/1732026270922-e22e86e1-4405-462f-b444-820e05771f73.jpg",
+      "http://localhost:5000/uploads/1732026270922-ef76c073-a3c4-4346-bfd1-7f7c0e43a82a.jpg"
     ],
     "price": 350
   },
@@ -159,8 +159,8 @@
     "description": "A private cabana with direct access to the pool, offering a queen-size bed and a sunbathing area.",
     "capacity": 4,
     "images": [
-      "1732026343334-233c7738-e4fb-4f2b-bc3a-318116f31e7f.jpg",
-      "1732026343334-700c3566-cc49-48e7-b0db-30049f559d66.jpg"
+      "http://localhost:5000/uploads/1732026343334-233c7738-e4fb-4f2b-bc3a-318116f31e7f.jpg",
+      "http://localhost:5000/uploads/1732026343334-700c3566-cc49-48e7-b0db-30049f559d66.jpg"
     ],
     "price": 450
   },
@@ -170,8 +170,8 @@
     "description": "A cozy room styled as a rustic cabin with a queen bed, fireplace, and wooden accents.",
     "capacity": 2,
     "images": [
-      "1732026431485-1b2b1f73-0bac-4f47-87f4-0d9504b6beb0.jpg",
-      "1732026431485-d06a46f6-7398-40a2-bf2d-0c6e1cb954d8.jpg"
+      "http://localhost:5000/uploads/1732026431485-1b2b1f73-0bac-4f47-87f4-0d9504b6beb0.jpg",
+      "http://localhost:5000/uploads/1732026431485-d06a46f6-7398-40a2-bf2d-0c6e1cb954d8.jpg"
     ],
     "price": 450
   },
@@ -181,8 +181,8 @@
     "description": " A grand suite with a full living area, dining table, private bar, and master bedroom with a king-size bed",
     "capacity": 2,
     "images": [
-      "1732026677829-38b07d32-7bcd-4774-9614-3370ff62877f.jpg",
-      "1732026677829-9673f08b-f9d3-4537-9bf4-52f0c03124f6.jpg"
+      "http://localhost:5000/uploads/1732026677829-38b07d32-7bcd-4774-9614-3370ff62877f.jpg",
+      "http://localhost:5000/uploads/1732026677829-9673f08b-f9d3-4537-9bf4-52f0c03124f6.jpg"
     ],
     "price": 400
   }
