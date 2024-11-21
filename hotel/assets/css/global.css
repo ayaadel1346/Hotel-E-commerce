@@ -52,9 +52,9 @@ body{
 .reverse-lines-dark{
     @apply hover:border-l-[3px] transition-all border-transparent border-l-[3px] border-r-[3px] duration-300 ease-out 
     hover:border-r-[3px] hover:border-l-yellow-600  hover:border-r-yellow-600  relative before:absolute before:top-0 
-    cursor-pointer before:left-0 before:h-[3px] before:bg-yellow-600 before:w-0 hover:before:w-[210px] before:transition-all 
+    cursor-pointer before:left-0 before:h-[3px] before:bg-yellow-600 before:w-[210px] before:transition-all before:translate-x-full hover:before:translate-x-0 
     before:duration-300 before:ease-out after:absolute after:bottom-0 after:right-0 after:h-[3px] after:bg-yellow-600 
-    after:w-0 hover:after:w-[210px] after:transition-all after:duration-300 after:ease-out
+    after:w-[210px] overflow-hidden after:-translate-x-full hover:after:translate-x-0 after:transition-all after:duration-300 after:ease-out
 }
 
 

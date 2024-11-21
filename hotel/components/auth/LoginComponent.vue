@@ -55,7 +55,7 @@
   
         <button 
          type="submit" 
-         class="w-[200px] after:bg-[#d0a668]  before:bg-[#d0a668] mt-5 z-0 overflow-hidden text-white flex justify-center items-center bg-accent button-reverse p-3">
+         class="w-[200px] after:bg-[#d0a668]  before:bg-[#d0a668] mt-8 z-0 overflow-hidden text-white flex justify-center items-center bg-accent button-reverse p-3">
           <span class="text-white z-10">Submit</span>
         </button>
 
