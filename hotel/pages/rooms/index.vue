@@ -1,14 +1,21 @@
 <template>
+  
   <keep-alive>
+
     <main>
 
       <RoomsTopSection />
 
       <section id="roomsSections">
 
-        <div class="my-[70px] px-10 grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1  w-full gap-3" v-if="statusRooms === 'pending'">
+        <div 
+         v-if="statusRooms === 'pending'"
+         class="my-[70px] px-10 grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1  w-full gap-3">
       
-          <div v-for="index in 9" :key="index" class="w-full mt-9">
+          <div 
+           v-for="index in 9" 
+           :key="index" 
+           class="w-full mt-9">
             <v-skeleton-loader type="card" class="w-full"></v-skeleton-loader>
           </div>
           
@@ -19,9 +26,13 @@
        </div>
 
       </section>
+
       <FooterMainFooter/>
+
     </main>
+
   </keep-alive>
+
 </template>
 
 
