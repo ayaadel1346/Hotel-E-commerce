@@ -1,8 +1,16 @@
 <template>
 
-  <main class="text-tableText mx-5 my-5 flex justify-center items-center container-fluid">
+<main class="text-tableText mx-5 my-5 flex justify-center items-center container-fluid">
 
-    <section class="w-full bg-gray min-h-[84vh] shadow-2xl rounded border-borderGray border-[1px]">
+  <div v-if="statusRooms ==='pending'">
+     <CubicSpinner/>
+  </div>
+
+
+  <section 
+    v-else  
+    class="w-full bg-gray min-h-[84vh] shadow-2xl rounded border-borderGray border-[1px]">
+
 
     <div class="flex justify-end p-5">
 
@@ -17,9 +25,11 @@
            Add
      </NuxtLink>
 
+
     </div>
 
-      <table class="w-full table-fixed">
+
+    <table class="w-full table-fixed">
 
         <thead>
 
@@ -48,30 +58,31 @@
             <td class="p-3">{{ room.capacity }} persons</td>
             <td class="p-3">${{ room.price.toFixed(2) }}</td>
             <td class="py-10 flex  justify-around items-center">
-            <NuxtLink  :to="{
-              path: `/rooms/${room.id}`, 
-              query: {
-               room:JSON.stringify(room)
-              }
-            }"
-           class=" flex  gap-1 justify-center items-center px-6 py-2 lg:min-w-[80px] min-w-[120px] rounded text-white  bg-blue-400 hover:bg-blue-500 transition-all duration-300 ease-in-out ">
-              <Icon
-              name="ic:outline-mode-edit"
-              size="20"
-              class="text-white "/>
-              Edit
-            </NuxtLink>
+              <NuxtLink
+                class="edit-button"
+                :to="{
+                  path: `/rooms/${room.id}`, 
+                  query: {
+                  room:JSON.stringify(room)
+                  }
+              }">
+                <Icon
+                name="ic:outline-mode-edit"
+                size="20"
+                class="text-white "/>
+                Edit
+              </NuxtLink>
 
-            <button
-             @click="deleteRooms(room.id)"
-             class="flex gap-1 justify-center mt-5 lg:mt-0 items-center px-6 py-2 lg:min-w-[80px] min-w-[120px]  rounded text-white  bg-red-400 hover:bg-red-500 transition-all duration-300 ease-in-out">
-              <Icon
-              name="ic:outline-delete"
-              size="20"
-              class="text-white "/>
+              <button
+              @click="deleteRooms(room.id)"
+              class="delete-button">
+                <Icon
+                name="ic:outline-delete"
+                size="20"
+                class="text-white "/>
 
-              Delete
-            </button>
+                Delete
+              </button>
 
             </td>
 
@@ -79,10 +90,11 @@
 
         </tbody>
 
-      </table>
+    </table>
 
     
-      <div class="flex justify-center gap-3 mt-5">
+
+    <div class="flex justify-center gap-3 mt-5">
 
         <button 
           @click="goToPage(currentPage - 1)" 
@@ -100,47 +112,51 @@
           Next
         </button>
 
-      </div>
+    </div>
 
-    </section>
+  </section>
 
-  </main>
+ </main>
 
 </template>
 
 
 
 <script setup>
-;
 import Swal from 'sweetalert2';
 
 const search = ref("");
 const rooms = useState('roomsData',()=>[]);
 const currentPage = ref(1);
+const statusRooms=ref('pending');
 const roomsPerPage = 4;
 
 
 const fetchRooms = async () => {
-
-  if (rooms.value.length) {
-    return;
-  }
-
+  if (rooms.value.length) return; 
 
 try {
-  const response = await $fetch("http://localhost:5000/rooms", {
-    method: "GET",
-  });
+  const { data:response} = await useLazyAsyncData('fetchRooms', () =>
+    $fetch('http://localhost:5000/rooms', { method: 'GET' })
+  );
 
-  if (response.rooms) {
-    rooms.value = response.rooms;
-  } else {
-    console.error("No rooms data found");
-  }
+  watch(response,(newResponse)=>{
+    if(response.value && response.value.rooms){
+      rooms.value=response.value.rooms;
+      statusRooms.value='loaded';
+    }else {
+      console.error('No rooms data found');
+      statusRooms.value='error';
+    }
+  })
+  
 } catch (err) {
-  console.error("Error fetching rooms:", err);
+  console.error('Error fetching rooms:', err);
+  statusRooms.value='error';
 }
+
 };
+
 
 
 const filteredRooms = computed(() => {

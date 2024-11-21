@@ -9,10 +9,9 @@
       <section class="grid mt-7 lg:mt-[80px]  grid-cols-1 gap-10 lg:flex lg:gap-6 lg:justify-center lg:items-center md:grid-cols-2">
 
        <div 
-       v-for="(data ,index) in homeFacilitiesData" 
-       :key="index"
-       :class="[index === 3?'':'lg:border-r-[2px] lg:border-darkAccent' ,'lg:w-1/4 p-3 flex flex-col items-center gap-5']" 
-       >
+         v-for="(data ,index) in homeFacilitiesData" 
+         :key="index"
+         :class="[index === 3?'':'lg:border-r-[2px] lg:border-darkAccent' ,'lg:w-1/4 p-3 flex flex-col items-center gap-5']">
 
         <NuxtImg 
           :src="data.image"

@@ -207,6 +207,5 @@ const submitForm = () => {
       registerReq(formData.value);
     }
 }
-
   </script>
   

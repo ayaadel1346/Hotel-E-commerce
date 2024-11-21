@@ -36,6 +36,20 @@ body{
 }
 
 
+.edit-button{
+  @apply flex  gap-1 justify-center items-center px-6 py-2 lg:min-w-[80px] min-w-[120px] rounded text-white  bg-blue-400 hover:bg-blue-500 transition-all duration-300 ease-in-out 
+}
+
+
+.delete-button{
+  @apply flex gap-1 justify-center mt-5 lg:mt-0 items-center px-6 py-2 lg:min-w-[80px] min-w-[120px]  rounded text-white  bg-red-400 hover:bg-red-500 transition-all duration-300 ease-in-out
+}
+
+
+.submit-button{
+  @apply w-[200px] after:bg-[#d0a668] dark:after:bg-[#eda95b] dark:before:bg-[#eda95b] before:bg-[#d0a668] mt-5 z-0 overflow-hidden text-white flex justify-center items-center bg-accent button-reverse p-3
+}
+
 .button-reverse{
   position: relative;
 }

@@ -30,19 +30,23 @@ body{
     before:left-0 
     before:h-[1px] 
     before:bg-accent 
-    before:w-0 
+    before:-translate-x-full
+    hover:before:translate-x-0
+    overflow-hidden 
     hover:before:w-full 
     before:transition-all 
     before:duration-300 
     before:ease-out
 }
 
+
 .reverse-lines{
-    @apply relative before:absolute before:top-0 before:left-0 before:h-[3px] before:bg-accent before:w-0
-           hover:before:w-full before:transition-all before:duration-300 before:ease-out
-           after:absolute after:bottom-0 after:right-0 after:h-[3px] after:bg-accent after:w-0
-           hover:after:w-full after:transition-all after:duration-300 after:ease-out
+    @apply relative before:bg-black  overflow-hidden before:absolute before:top-0 before:left-0 before:h-[3px] hover:before:bg-accent before:w-full
+           before:-translate-x-full hover:before:translate-x-0 before:transition-all before:duration-300 before:ease-out
+           after:absolute after:bottom-0 after:right-0 after:h-[3px] hover:after:bg-accent after:w-full after:bg-black
+           after:translate-x-full hover:after:translate-x-0 after:transition-all after:duration-300 after:ease-out
 }
+
 
 
 .reverse-lines-dark{
@@ -52,6 +56,8 @@ body{
     before:duration-300 before:ease-out after:absolute after:bottom-0 after:right-0 after:h-[3px] after:bg-yellow-600 
     after:w-0 hover:after:w-[210px] after:transition-all after:duration-300 after:ease-out
 }
+
+
 
 @keyframes moveLeftRight {
     0% {

@@ -2,12 +2,16 @@
 
   <main class="p-6 min-h-[90vh] flex justify-center items-center">
 
-    <section class="flex   flex-col justify-start items-center border-[3px] border-accent p-5 md:w-[70%] lg:w-[40%] w-[90%]">
-        <h1 class="text-center text-black  my-10 text-[20px] md:text-[30px]">Login</h1>
+    <section class="flex flex-col  justify-start  items-center  border-[3px]  border-accent  p-5  md:w-[70%]  lg:w-[40%]  w-[90%]">
+        
+        <h1 class="text-center text-black my-10 text-[20px] md:text-[30px]">
+          Login
+        </h1>
+
   
         <form 
           @submit.prevent="submitForm" 
-          class="flex flex-col w-[90%]  items-center  mx-auto">
+          class="flex  flex-col w-[90%]  items-center  mx-auto">
 
           <section class="relative mt-5 w-full">
             <input
@@ -55,21 +59,19 @@
 
 
           <button 
-          type="submit" 
-          class="w-[200px] after:bg-[#d0a668] dark:after:bg-[#eda95b] dark:before:bg-[#eda95b]  before:bg-[#d0a668] mt-5 z-0 overflow-hidden text-white flex justify-center items-center bg-accent button-reverse p-3">
-            <span class="text-white z-10">Submit</span>
+            type="submit" 
+            class="w-[200px] after:bg-[#d0a668] dark:after:bg-[#eda95b] dark:before:bg-[#eda95b]  before:bg-[#d0a668] mt-5 z-0 overflow-hidden text-white flex justify-center items-center bg-accent button-reverse p-3">
+              <span class="text-white z-10">Submit</span>
           </button>
 
 
           <h1 
-          v-if="message" 
-          :class="{'bg-red-200': errorMessage,'p-5 text-black text-center mt-5 text-sm w-full':true}">
-              {{ message }}
+            v-if="message" 
+            :class="{'bg-red-200': errorMessage,'p-5 text-black text-center mt-5 text-sm w-full':true}">
+                {{ message }}
           </h1>
 
-
         </form>
-
 
      </section>
 

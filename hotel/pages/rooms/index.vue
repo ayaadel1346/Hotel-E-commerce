@@ -1,39 +1,59 @@
 <template>
   <keep-alive>
-    <div>
+    <main>
+
       <RoomsTopSection />
-      <div id="roomsSections">
+
+      <section id="roomsSections">
+
+        <div class="my-[70px] px-10 grid lg:grid-cols-3 md:grid-cols-2  grid-cols-1  w-full gap-3" v-if="statusRooms === 'pending'">
+      
+          <div v-for="index in 9" :key="index" class="w-full mt-9">
+            <v-skeleton-loader type="card" class="w-full"></v-skeleton-loader>
+          </div>
+          
+        </div>
+
+       <div v-else >
         <RoomsAllRooms />
-      </div>
-    </div>
+       </div>
+
+      </section>
+      <FooterMainFooter/>
+    </main>
   </keep-alive>
 </template>
 
-<script setup>
-const rooms = useState('roomsData', () => [])
 
+<script setup>
+const rooms = useState('roomsData', () => []);
+const statusRooms=ref('pending');
 
 const fetchRooms = async () => {
   if (rooms.value.length) return; 
 
   try {
-    const { data:response, status } = await useLazyAsyncData('fetchRooms', () =>
+    const { data:response} = await useLazyAsyncData('fetchRooms', () =>
       $fetch('http://localhost:5000/rooms', { method: 'GET' })
     );
 
     watch(response,(newResponse)=>{
       if(response.value && response.value.rooms){
         rooms.value=response.value.rooms;
+        statusRooms.value='loaded';
       }else {
         console.error('No rooms data found');
+        statusRooms.value='error';
       }
     })
     
   } catch (err) {
     console.error('Error fetching rooms:', err);
+    statusRooms.value='error';
   }
 };
 
 
 fetchRooms();
+
 </script>

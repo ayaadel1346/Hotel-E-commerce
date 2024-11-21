@@ -1,7 +1,6 @@
-
 <template>
     
- <main class="container-fluid  bg-primaryDark overflow-hidden ">
+  <main class="container-fluid  bg-primaryDark overflow-hidden ">
 
     <section class="container-fluid overflow-hidden lg:container lg:mx-auto  mx-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
      

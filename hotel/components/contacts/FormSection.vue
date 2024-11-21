@@ -13,7 +13,11 @@
           assist with bookings, and ensure that your experience with us is exceptional from start to finish.
         </p>
 
-        <section v-for="(link, index) in linksData" :key="index" class="flex mt-8 justify-center items-center">
+        <section 
+         v-for="(link, index) in linksData" 
+         :key="index" 
+         class="flex mt-8 justify-center items-center">
+
           <aside>
             <Icon :size="40" :name="link.iconName" class="text-accent mr-2" />
           </aside>
@@ -29,6 +33,7 @@
             {{ link.linkName }}
             </NuxtLink>
           </aside>
+          
         </section>
 
       </aside>

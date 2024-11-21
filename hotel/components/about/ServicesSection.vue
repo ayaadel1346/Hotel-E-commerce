@@ -49,7 +49,7 @@
                 class="w-full h-full  lg:rounded-tr-[15%]"
                 />
     
-             </div>
+            </div>
 
 
             <div class=" lg:h-2/5 py-10  bg-whiteGray w-full flex-col justify-center items-center">

@@ -50,8 +50,8 @@ const images = [
 'https://media.istockphoto.com/id/1409928624/photo/3d-rendering-3d-illustration-interior-scene-and-mockup-interior-render-bedroom-modern-style.jpg?s=612x612&w=0&k=20&c=1K23xPBXIo0KY6mgDs5DOllngRgDB_5XNXyyvFlG7YM=',
 'https://media.istockphoto.com/id/2170450588/photo/interior-of-modern-light-gym-is-well-equipped-with-modern-machines-and-fitness-gear-offering.jpg?s=612x612&w=0&k=20&c=XCRJmw5R4oek_MioaTZa41Mof-dYTP9Hb3C1CKSkYHw=',
 'https://media.istockphoto.com/id/1313754558/photo/3d-render-of-luxury-hotel-reception-and-lobby.jpg?s=612x612&w=0&k=20&c=6rwvW3_FYX96G8tqY85iyyeEwaDzxlEV_Ndrn6Iyd8c=',
-  'https://media.istockphoto.com/id/1977650658/photo/modern-hall-interior-with-reception-desk-in-hotel-with-wood-panel-and-moss-wall-concrete.jpg?s=612x612&w=0&k=20&c=YfZSnUNLqRdIhYqir0nZ6Q96Q329yS8qRMK4CpCrfGk=',
-  'http://paul-themes.com/html/archiko/img/slider/architecture3.jpg',
+'https://media.istockphoto.com/id/1977650658/photo/modern-hall-interior-with-reception-desk-in-hotel-with-wood-panel-and-moss-wall-concrete.jpg?s=612x612&w=0&k=20&c=YfZSnUNLqRdIhYqir0nZ6Q96Q329yS8qRMK4CpCrfGk=',
+ 'http://paul-themes.com/html/archiko/img/slider/architecture3.jpg',
 ];
 </script>
 

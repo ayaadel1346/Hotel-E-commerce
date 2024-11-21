@@ -1,22 +1,33 @@
 <template>
 
-    <main class="container-fluid text-tableText mx-5 rounded shadow-2xl py-[1%] lg:min-h-[80vh] border-[1px] border-borderGray my-[2%] flex flex-col justify-center items-center">
+    <main class="container-fluid text-tableText mx-5 rounded shadow-2xl py-[1%] lg:min-h-[80vh] border-[1px] 
+                 border-borderGray my-[2%] flex flex-col justify-center items-center">
       
-      <h1 class="text-center text-tableText leading-[30px] text-[20px] md:text-[30px]">Edit Room</h1>
+      <h1 class="text-center text-tableText leading-[30px] text-[20px] md:text-[30px]">
+        Edit Room
+      </h1>
   
-      <form @submit.prevent="submitForm(room.id)" class="flex flex-col w-[90%] md:w-[70%] lg:w-[50%] items-center mx-auto">
+
+      <form 
+       @submit.prevent="submitForm(room.id)" 
+       class="flex flex-col w-[90%] md:w-[70%] lg:w-[50%] items-center mx-auto">
         
-        <section v-for="(input, index) in rooms" :key="index" class="relative mt-5 w-full">
+        <section 
+         v-for="(input, index) in rooms" 
+         :key="index" 
+         class="relative mt-5 w-full">
           
          
           <template v-if="input.type !== 'images'">
+
             <input
               v-if="input.type === 'text' || input.type === 'number'"
               :type="input.type"
               :id="input.name"
               v-model="inputValues[input.name]"
               required
-              class="peer capitalize bg-gray w-full border border-accent rounded-md p-3 placeholder-transparent focus:outline-none focus:border-blue-500"
+              class="peer capitalize bg-gray w-full border border-accent rounded-md p-3 placeholder-transparent 
+                     focus:outline-none focus:border-blue-500"
               :placeholder="input.name"
             />
             
@@ -31,10 +42,13 @@
             >
               {{ input.name }}
             </label>
+
           </template>
   
+
          
           <template v-if="input.type === 'images'">
+
             <input
               type="file"
               @change="handleFileChange"
@@ -42,13 +56,14 @@
               accept="image/jpeg, image/png, image/gif, image/jpg"
               class="peer bg-gray w-full border border-accent rounded-md p-3 placeholder-transparent focus:outline-none focus:border-blue-500"
             />
+
           </template>
   
         </section>
   
         <button 
          type="submit" 
-         class="w-[200px] after:bg-[#d0a668] dark:after:bg-[#eda95b] dark:before:bg-[#eda95b] before:bg-[#d0a668] mt-5 z-0 overflow-hidden text-white flex justify-center items-center bg-accent button-reverse p-3">
+         class="submit-button">
           <span class="text-white z-10">Submit</span>
         </button>
 
@@ -60,6 +75,7 @@
   
   <script setup>
   const roomsData = useState('roomsData');
+
 
   const props =defineProps({
   room: {
@@ -73,7 +89,7 @@
       images: []
     })
   }
-});
+ });
 
 
   const rooms = [
@@ -106,36 +122,29 @@ const submitForm = async (id) => {
     if (import.meta.client) {
       const token = sessionStorage.getItem('token');
 
-      // Create a FormData object
+     
       const formData = new FormData();
       formData.append('roomName', inputValues.roomName);
       formData.append('description', inputValues.description);
       formData.append('capacity', inputValues.capacity);
       formData.append('price', inputValues.price);
 
-      // Append all images in one array-like format in FormData
+     
       inputValues.images.forEach((image) => {
         if (image instanceof File) {
-          formData.append('images', image); // Appending each image with the same key
+          formData.append('images', image); 
         }
       });
 
-      // Debugging: Log FormData to verify the structure
-      for (const [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-
-      // Send FormData in the request
       const { data, error } = await $fetch(`http://localhost:5000/edit-room/${id}`, {
         method: 'PUT',
         body: formData,
         headers: {
-          Authorization: `Bearer ${token}`, // Do not set 'Content-Type' for FormData
+          Authorization: `Bearer ${token}`, 
         },
       });
 
       if (!error) {
-        // Update local state
         if (Array.isArray(roomsData.value)) {
           roomsData.value = roomsData.value.map((roomData) => {
             return roomData.id === props.room.id ? { ...roomData, ...inputValues } : roomData;
@@ -150,8 +159,6 @@ const submitForm = async (id) => {
     console.error('An error occurred:', error);
   }
 };
-
-
  
-  </script>
+</script>
   
