@@ -10,3 +10,9 @@
     </keep-alive>
 </template>
 
+
+<script setup>
+useHead({
+  title: 'Hotera-about',
+})
+</script>

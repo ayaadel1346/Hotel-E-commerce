@@ -37,8 +37,14 @@
 
 
 <script setup>
+
+useHead({
+  title: 'Hotera-rooms',
+})
+
 const rooms = useState('roomsData', () => []);
 const statusRooms=ref('pending');
+
 
 const fetchRooms = async () => {
   if (rooms.value.length) return; 

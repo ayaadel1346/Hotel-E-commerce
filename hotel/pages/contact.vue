@@ -9,3 +9,9 @@
        </div>
    </keep-alive>
 </template>
+
+<script setup>
+useHead({
+  title: 'Hotera-contact Us',
+})
+</script>
