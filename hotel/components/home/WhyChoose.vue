@@ -10,9 +10,9 @@
        class="absolute hidden lg:block z-20 w-[100%] top-0 right-0 animate-moveLeftRight"/>
         
      <section 
-      class=" parallex h-[100vh] before:content-[''] before:absolute before:bottom-[-5px]  before:bg-white before:h-[6%] before:container 
+      class="parallex h-[100vh] before:content-[''] before:absolute before:bottom-[-5px]  before:bg-white lg:before:h-[10%] before:h-[6%] before:container 
               before:mx-auto   flex justify-center items-center  after:content-[''] after:absolute after:top-[-10px] 
-            after:bg-white after:h-[6%] after:container after:mx-auto">
+            after:bg-white lg:after:h-[10%] after:h-[6%] after:container after:mx-auto">
       
       <article 
        v-motion-pop-visible-once 
