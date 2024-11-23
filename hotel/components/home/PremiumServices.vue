@@ -7,7 +7,7 @@
         <aside class="lg:block hidden w-full relative lg:mt-0 mt-[50px]  lg:w-[40%]">
 
             <v-parallax
-            src="https://media.istockphoto.com/id/1732983887/photo/interior-design-of-modern-bedroom.jpg?s=612x612&w=0&k=20&c=JKYp8lPEmOM9DmInTaZd1i7r4jj7D7DL8fna8TWLxqU="
+            src="/images/istockphoto-1732983887-612x612.webp"
             alt="image"
             class="rounded w-full h-[250px] md:w-[80%] md:mx-auto lg:mx-0 lg:w-full lg:h-[600px]"
             ></v-parallax>
@@ -15,7 +15,7 @@
        
 
             <NuxtImg
-            src="https://media.istockphoto.com/id/2021707621/photo/night-scene-modern-style-luxury-black-master-bedroom-with-city-view-3d-render.jpg?s=612x612&w=0&k=20&c=D4_n5-lvzP9HiC-MXI8f5qYM9R7CH6EbF2Xyq9V8b_o="
+            src="/images/istockphoto-2021707621-612x612.webp"
             width="450"
             height="300"
             alt="image"

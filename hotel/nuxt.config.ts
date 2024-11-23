@@ -38,8 +38,25 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       link: [
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap'
+          rel: 'preload',
+          href: 'https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap',
+          as: 'style',
+          onload: "this.onload=null;this.rel='stylesheet'"
+        },
+        {
+          rel: 'preload',
+          as: 'image',
+          href:'/images/1.webp',
+        },
+        {
+          rel: 'preload',
+          as: 'image',
+          href:'/images/slider3-home1-1.webp',
+        },
+        {
+          rel: 'preload',
+          as: 'image',
+          href:'/images/4.webp',
         },
       ]
     }

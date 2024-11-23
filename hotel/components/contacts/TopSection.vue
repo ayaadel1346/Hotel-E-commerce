@@ -8,7 +8,7 @@
  
  <script setup>
  const TopSectionProp={
-     imageSrc:'https://wp.hostlin.com/nilachol/images/slider/4.jpg',
+     imageSrc:'/images/4.webp',
      src:'#form',
      linkName:'Contact'
  }

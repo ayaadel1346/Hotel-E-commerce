@@ -20,14 +20,14 @@
 
         <aside class="w-full relative lg:mt-0 mt-[50px]  lg:w-[40%]">
             <v-parallax
-                src="https://images.unsplash.com/photo-1563629986-97c92e385f66?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDQyfHxob3RlbHxlbnwwfHwwfHx8MA%3D%3D"
+                src="/images/photo-1563629986-97c92e385f66.avif"
                 alt="image"
                 class="rounded w-full h-[300px] md:w-[80%] md:mx-auto lg:mx-0 lg:w-full md:h-[600px] ">
             </v-parallax>
             
 
             <NuxtImg
-                src="https://plus.unsplash.com/premium_photo-1661964402307-02267d1423f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsfGVufDB8fDB8fHww"
+                src="/images/premium_photo-1661964402307-02267d1423f5.avif"
                 width="450"
                 height="300"
                 alt="image"

@@ -27,9 +27,7 @@
 
             <div class="w-full lg:h-3/5  rounded-tr-[30%]">
                 <NuxtImg 
-                src="https://www.11-76.com/themes/luxex/luxex/img/about/services/2.jpg"
-                width="200"
-                height="70"
+                src="/images/2.webp"
                 class="w-full h-full lg:rounded-bl-[15%]"
                />
             </div>
@@ -43,10 +41,8 @@
             <div class="w-full lg:h-3/5 bg-whiteGray">
 
                 <NuxtImg 
-                src="https://www.11-76.com/themes/luxex/luxex/img/about/services/3.jpg"
-                width="200"
-                height="70"
-                class="w-full h-full  lg:rounded-tr-[15%]"
+                src="/images/3.webp"
+                class="w-full h-full lg:rounded-tr-[15%]"
                 />
     
             </div>
@@ -89,9 +85,7 @@
             <div class="w-full lg:h-3/5">
 
                 <NuxtImg 
-                src="https://www.11-76.com/themes/luxex/luxex/img/about/services/4.jpg"
-                width="200"
-                height="70"
+                src="/images/4 (1).webp"
                 class="w-full h-full lg:rounded-br-[15%]"
                />
 

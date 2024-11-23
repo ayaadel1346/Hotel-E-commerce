@@ -8,7 +8,7 @@
 
 <script setup>
 const TopSectionProp={
-    imageSrc:'https://templates.thememodern.com/theratio/images/slider/slider3-home1-1.jpg',
+    imageSrc:'/images/slider3-home1-1.webp',
     src:'#services',
     linkName:' Services'
 }

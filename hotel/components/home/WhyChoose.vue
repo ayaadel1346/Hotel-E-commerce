@@ -10,7 +10,7 @@
        class="absolute hidden lg:block z-20 w-[100%] top-0 right-0 animate-moveLeftRight"/>
         
      <v-parallax 
-      src="https://templates.thememodern.com/theratio/images/slider/slider3-home1-1.jpg"
+      src="/images/slider3-home1-1.webp"
       class=" before:content-[''] before:absolute before:bottom-[-5px]  before:bg-white before:h-[6%] before:container 
               before:mx-auto   flex justify-center items-center  after:content-[''] after:absolute after:top-[-10px] 
             after:bg-white after:h-[6%] after:container after:mx-auto">

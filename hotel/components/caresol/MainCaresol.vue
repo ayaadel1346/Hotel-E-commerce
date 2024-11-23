@@ -80,7 +80,7 @@ const handleMouseMove = (event) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('https://madebydesignesia.com/themes/almaris/images/background/1.webp');
+  background-image: url('/images/1.webp');
   background-size: cover;
   background-position: center;
 }
