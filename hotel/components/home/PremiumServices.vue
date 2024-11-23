@@ -6,11 +6,11 @@
 
         <aside class="lg:block hidden w-full relative lg:mt-0 mt-[50px]  lg:w-[40%]">
 
-            <v-parallax
+            <NuxtImg
             src="/images/istockphoto-1732983887-612x612.webp"
             alt="image"
             class="rounded w-full h-[250px] md:w-[80%] md:mx-auto lg:mx-0 lg:w-full lg:h-[600px]"
-            ></v-parallax>
+            ></NuxtImg>
         
        
 

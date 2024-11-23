@@ -9,13 +9,12 @@
        alt="arrow"
        class="absolute hidden lg:block z-20 w-[100%] top-0 right-0 animate-moveLeftRight"/>
         
-     <v-parallax 
-      src="/images/slider3-home1-1.webp"
-      class=" before:content-[''] before:absolute before:bottom-[-5px]  before:bg-white before:h-[6%] before:container 
+     <section 
+      class=" parallex h-[100vh] before:content-[''] before:absolute before:bottom-[-5px]  before:bg-white before:h-[6%] before:container 
               before:mx-auto   flex justify-center items-center  after:content-[''] after:absolute after:top-[-10px] 
             after:bg-white after:h-[6%] after:container after:mx-auto">
       
-      <section 
+      <article 
        v-motion-pop-visible-once 
        class="duration-2000 lg:w-[67%] w-full lg:mx-auto rounded  p-10  lg:bg-white bg-[#1d1d1db3] container-fluid ">
               
@@ -29,12 +28,20 @@
             At <span class="lg:text-darkAccent text-accent">Hotera</span>, our guests are our top priority. Our attentive and dedicated staff are committed to making every moment of your stay memorable. From personalized check-in experiences to thoughtful concierge services.
          </p>
 
-      </section>
+      </article>
 
-     </v-parallax>
+     </section>
 
     </main>
 
 </template>
 
-
+<style scoped>
+.parallex{
+   background-image: url("/images/slider3-home1-1.webp");
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+</style>

@@ -1,9 +1,7 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   build: {
-    transpile: ['vuetify'],
+   
   },
   devtools: { enabled: true },
   css: [
@@ -15,12 +13,6 @@ export default defineNuxtConfig({
     '@nuxt/icon', 
     '@nuxt/image', 
     '@nuxtjs/color-mode', 
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
   ],
   colorMode: {
     classSuffix: '',  
@@ -28,7 +20,7 @@ export default defineNuxtConfig({
   vite: {
     vue: {
       template: {
-        transformAssetUrls,
+      
       },
     },
   },

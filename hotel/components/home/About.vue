@@ -19,11 +19,11 @@
 
 
         <aside class="w-full relative lg:mt-0 mt-[50px]  lg:w-[40%]">
-            <v-parallax
+            <NuxtImg
                 src="/images/photo-1563629986-97c92e385f66.avif"
                 alt="image"
                 class="rounded w-full h-[300px] md:w-[80%] md:mx-auto lg:mx-0 lg:w-full md:h-[600px] ">
-            </v-parallax>
+            </NuxtImg>
             
 
             <NuxtImg

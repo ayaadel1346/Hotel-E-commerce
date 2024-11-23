@@ -16,7 +16,7 @@
            v-for="index in 9" 
            :key="index" 
            class="w-full mt-9">
-            <v-skeleton-loader type="card" class="w-full"></v-skeleton-loader>
+           <SkeletonLoader/>
           </div>
           
         </div>
@@ -37,7 +37,6 @@
 
 
 <script setup>
-
 useHead({
   title: 'Hotera-rooms',
 })

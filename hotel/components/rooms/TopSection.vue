@@ -8,7 +8,7 @@
  
 <script setup>
  const TopSectionProp={
-     imageSrc:'https://thewebmax.org/sharan/images/main-slider/slider1/slide2.jpg',
+     imageSrc:'/images/slide2.webp',
      src:'#roomsSections',
      linkName:' Rooms'
  }

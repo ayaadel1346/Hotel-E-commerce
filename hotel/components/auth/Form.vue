@@ -60,7 +60,7 @@ const images = [
 <style scoped>
 
 .auth {
-  background-image: url('https://html.ditsolution.net/royella/assets/images/home-1/hero-bg.jpg');
+  background-image: url('/images/hero-bg.webp');
   background-size: cover;
   background-repeat: no-repeat;
 }
